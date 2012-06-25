@@ -35,29 +35,30 @@ package com.irzal
 		//scroll bar slider button mouse down handler
 		private function sliderDownHandler(e:MouseEvent=null):void 
 		{
-			ScrollBar(getChildByName("_slider")).blendMode = BlendMode.DIFFERENCE;
-			ScrollBar(getChildByName("_slider")).removeEventListener(MouseEvent.MOUSE_DOWN, sliderDownHandler);
+			Sprite(getChildByName("_slider")).blendMode = BlendMode.DIFFERENCE;
+			Sprite(getChildByName("_slider")).removeEventListener(MouseEvent.MOUSE_DOWN, sliderDownHandler);
 			stage.addEventListener(MouseEvent.MOUSE_UP, sliderUpHandler,false,0,true);
 		}
 		//scroll bar slider button mouse up handler
 		private function sliderUpHandler(e:MouseEvent):void 
 		{
-			ScrollBar(getChildByName("_slider")).blendMode = BlendMode.NORMAL;
+			Sprite(getChildByName("_slider")).blendMode = BlendMode.NORMAL;
 			stage.removeEventListener(MouseEvent.MOUSE_UP, sliderUpHandler);
-			ScrollBar(getChildByName("_slider")).addEventListener(MouseEvent.MOUSE_DOWN, sliderDownHandler, false, 0, true);
+			Sprite(getChildByName("_slider")).addEventListener(MouseEvent.MOUSE_DOWN, sliderDownHandler, false, 0, true);
 		}
+		
 		//set slider button height and scroll range
 		public function _setSliderHeight():void
 		{
-			ScrollBar(getChildByName("_slider")).height = 15;
-			var percObjectHeight:Number = ScrollBar(getChildByName("_path")).height/SongList._height;
-			var percSliderHeight:Number = ScrollBar(getChildByName("_path")).height / ScrollBar(getChildByName("_slider")).height;
+			Sprite(getChildByName("_slider")).height = 15;
+			var percObjectHeight:Number = Sprite(getChildByName("_path")).height/SongList._height;
+			var percSliderHeight:Number = Sprite(getChildByName("_path")).height / Sprite(getChildByName("_slider")).height;
 			var _scaleY:Number = percObjectHeight * percSliderHeight;
-			if (percObjectHeight >= 1) ScrollBar(getChildByName("_slider")).height = ScrollBar(getChildByName("_path")).height;
-			else (_scaleY < 2)? ScrollBar(getChildByName("_slider")).scaleY = 2 : ScrollBar(getChildByName("_slider")).scaleY = _scaleY;
-			scrollUpper = ScrollBar(getChildByName("_path")).y + (ScrollBar(getChildByName("_slider")).height*0.5);
-			scrollLower = ScrollBar(getChildByName("_path")).height - ScrollBar(getChildByName("_slider")).height;
-			ScrollBar(getChildByName("_slider")).y = scrollUpper;
+			if (percObjectHeight >= 1) Sprite(getChildByName("_slider")).height = Sprite(getChildByName("_path")).height;
+			else (_scaleY < 2)? Sprite(getChildByName("_slider")).scaleY = 2 : Sprite(getChildByName("_slider")).scaleY = _scaleY;
+			scrollUpper = Sprite(getChildByName("_path")).y + (Sprite(getChildByName("_slider")).height*0.5);
+			scrollLower = Sprite(getChildByName("_path")).height - Sprite(getChildByName("_slider")).height;
+			Sprite(getChildByName("_slider")).y = scrollUpper;
 		}
 	}
 }
